@@ -380,7 +380,22 @@ func EnsureSpelling() error {
 
 // EnsureVet ensures that the source has been `go vet`ted
 func EnsureVet() error {
-	return goSourceApply("go", "tool", "vet")
+	cmdOptions := []string{"vet"}
+	if mg.Verbose() {
+		cmdOptions = append(cmdOptions, "-v")
+	}
+	cmdOptions = append(cmdOptions, ".")
+	fmt.Printf("COMMAND: %#v\n", cmdOptions)
+	cmd := exec.Command("go", cmdOptions...)
+	var stdout, stderr bytes.Buffer
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	if (mg.Verbose() && stderr.String() != "") ||
+		err != nil {
+		log.Print(stderr.String())
+	}
+	return err
 }
 
 // EnsureLint ensures that the source is `golint`ed
