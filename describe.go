@@ -172,8 +172,8 @@ func templateJSFiles(logger *logrus.Logger) []*templateResource {
 
 func templateImageMap(logger *logrus.Logger) map[string]string {
 	images := []string{"SpartaHelmet256.png",
-		"AWSIcons/Compute/Compute_AWSLambda_LambdaFunction.svg",
-		"AWSIcons/Management Tools/ManagementTools_AWSCloudFormation.svg",
+		"AWS-Architecture-Icons/Dark-BG/Compute/AWS-Lambda_Lambda-Function_dark-bg.svg",
+		"AWS-Architecture-Icons/Dark-BG/Management & Governance/AWS-CloudFormation_Stack_dark-bg.svg",
 	}
 	resources := templateResourcesForKeys(images, logger)
 	imageMap := make(map[string]string)
@@ -193,7 +193,7 @@ func iconForAWSResource(rawEmitter interface{}) string {
 	}
 	canonicalRaw := strings.ToLower(string(jsonBytes))
 	iconMappings := map[string]string{
-		"dynamodb":   "AWSIcons/Database/Database_AmazonDynamoDB.svg",
+		"dynamodb":   "AWS-Architecture-Icons/Dark-BG/Database/Amazon-DynamoDB.svg",
 		"sqs":        "AWSIcons/Messaging/Messaging_AmazonSQS.svg",
 		"sns":        "AWSIcons/Messaging/Messaging_AmazonSNS_topic.svg",
 		"cloudwatch": "AWSIcons/Management Tools/ManagementTools_AmazonCloudWatch.svg",

@@ -281,11 +281,10 @@ const SpartaGitHash = "%s"
 // GenerateConstants runs the set of commands that update the embedded CONSTANTS
 // for both local and AWS Lambda execution
 func GenerateConstants() error {
+
 	generateCommands := [][]string{
 		// Create the embedded version
-		{"go",
-			"run",
-			"$GOPATH/src/github.com/mjibson/esc/main.go",
+		{"esc",
 			"-o",
 			"./CONSTANTS.go",
 			"-private",
@@ -293,9 +292,7 @@ func GenerateConstants() error {
 			"sparta",
 			"./resources"},
 		//Create a secondary CONSTANTS_AWSBINARY.go file with empty content.
-		{"go",
-			"run",
-			"$GOPATH/src/github.com/mjibson/esc/main.go",
+		{"esc",
 			"-o",
 			"./CONSTANTS_AWSBINARY.go",
 			"-private",
