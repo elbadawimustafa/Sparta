@@ -194,12 +194,12 @@ func iconForAWSResource(rawEmitter interface{}) string {
 	canonicalRaw := strings.ToLower(string(jsonBytes))
 	iconMappings := map[string]string{
 		"dynamodb":   "AWS-Architecture-Icons/Dark-BG/Database/Amazon-DynamoDB.svg",
-		"sqs":        "AWSIcons/Messaging/Messaging_AmazonSQS.svg",
-		"sns":        "AWSIcons/Messaging/Messaging_AmazonSNS_topic.svg",
-		"cloudwatch": "AWSIcons/Management Tools/ManagementTools_AmazonCloudWatch.svg",
-		"kinesis":    "AWSIcons/Analytics/Analytics_AmazonKinesis.svg",
-		"s3":         "AWSIcons/Storage/Storage_AmazonS3_bucket.svg",
-		"codecommit": "AWSIcons/Developer Tools/DeveloperTools_AWSCodeCommit.svg",
+		"sqs":        "AWS-Architecture-Icons/Dark-BG/Application Integration/Amazon-Simple-Queue-Service-SQS.svg",
+		"sns":        "AWS-Architecture-Icons/Dark-BG/Application Integration/Amazon-Simple-Notification-Service-SNS.svg",
+		"cloudwatch": "AWS-Architecture-Icons/Dark-BG/Management & Governance/Amazon-CloudWatch.svg",
+		"kinesis":    "AWS-Architecture-Icons/Dark-BG/Analytics/Amazon-Kinesis.svg",
+		"s3":         "AWS-Architecture-Icons/Dark-BG/Storage/Amazon-Simple-Storage-Service-S3.svg",
+		"codecommit": "AWS-Architecture-Icons/Dark-BG/Developer Tools/AWS-CodeCommit.svg",
 	}
 	// Return it if we have it...
 	for eachKey, eachPath := range iconMappings {
@@ -207,7 +207,7 @@ func iconForAWSResource(rawEmitter interface{}) string {
 			return eachPath
 		}
 	}
-	return "AWSIcons/General/General_AWScloud.svg"
+	return "AWS-Architecture-Icons/Dark-BG/_Group Icons/AWS-Cloud_dark-bg.svg"
 }
 
 // Describe produces a graphical representation of a service's Lambda and data sources.  Typically
@@ -272,7 +272,7 @@ func Describe(serviceName string,
 	writeErr := writeNode(&cytoscapeElements,
 		serviceName,
 		nodeColorService,
-		"AWSIcons/Management Tools/ManagementTools_AWSCloudFormation_stack.svg",
+		"AWS-Architecture-Icons/Dark-BG/Management & Governance/AWS-CloudFormation.svg",
 		logger)
 	if writeErr != nil {
 		return writeErr
@@ -283,7 +283,7 @@ func Describe(serviceName string,
 		writeErr = writeNode(&cytoscapeElements,
 			eachLambda.lambdaFunctionName(),
 			nodeColorLambda,
-			"AWSIcons/Compute/Compute_AWSLambda.svg",
+			"AWS-Architecture-Icons/Dark-BG/Compute/AWS-Lambda.svg",
 			logger)
 		if writeErr != nil {
 			return writeErr
@@ -362,7 +362,7 @@ func Describe(serviceName string,
 		writeErr = writeNode(&cytoscapeElements,
 			nodeNameAPIGateway,
 			nodeColorAPIGateway,
-			"AWSIcons/Application Services/ApplicationServices_AmazonAPIGateway.svg",
+			"AWS-Architecture-Icons/Dark-BG/Mobile/Amazon-API-Gateway.svg",
 			logger)
 		if writeErr != nil {
 			return writeErr
@@ -374,7 +374,7 @@ func Describe(serviceName string,
 				writeErr = writeNode(&cytoscapeElements,
 					nodeName,
 					nodeColorAPIGateway,
-					"AWSIcons/General/General_Internet.svg",
+					"AWS-Architecture-Icons/Dark-BG/_Group Icons/AWS-Cloud_dark-bg.svg",
 					logger)
 				if writeErr != nil {
 					return writeErr
